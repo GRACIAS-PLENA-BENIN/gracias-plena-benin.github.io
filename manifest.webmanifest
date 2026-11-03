@@ -1,0 +1,14 @@
+{
+  "name": "GRACIAS — Comptabilité",
+  "short_name": "GRACIAS",
+  "description": "Comptabilité et gestion de la société",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F5F6F9",
+  "theme_color": "#23306B",
+  "icons": [
+    { "src": "icone.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
