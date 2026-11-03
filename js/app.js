@@ -10,6 +10,7 @@ import { vueLettrage } from './vues/lettrage.js';
 import { vueClotures } from './vues/clotures.js';
 import { vueUtilisateurs } from './vues/utilisateurs.js';
 import { vueSauvegarde, bandeauSauvegarde } from './vues/sauvegarde.js';
+import { vueParametrage } from './vues/parametrage.js';
 
 const racine = document.getElementById('app');
 
@@ -41,6 +42,7 @@ const MENU = [
   { route: '#/grand-livre', titre: 'Grand livre', droit: 'lecture', principal: true },
   { route: '#/balance', titre: 'Balance', droit: 'lecture', principal: true },
   { route: '#/lettrage', titre: 'Lettrage', droit: 'lettrage' },
+  { route: '#/parametrage', titre: 'Paramétrage', droit: 'lecture' },
   { route: '#/clotures', titre: 'Exercices et clôtures', droit: 'lecture' },
   { route: '#/utilisateurs', titre: 'Utilisateurs', droit: 'utilisateurs' },
   { route: '#/sauvegarde', titre: 'Sauvegarde', droit: 'sauvegarde' },
@@ -176,6 +178,7 @@ async function afficherRoute() {
     else if (ecran === 'balance') await vueBalance(ctx, zone);
     else if (ecran === 'lettrage' && ctx.peut('lettrage')) await vueLettrage(ctx, zone);
     else if (ecran === 'clotures') await vueClotures(ctx, zone);
+    else if (ecran === 'parametrage') await vueParametrage(ctx, zone);
     else await vueEcritures(ctx, zone);
   } catch (err) {
     if (err instanceof ErreurApi && err.statut === 401) return;
