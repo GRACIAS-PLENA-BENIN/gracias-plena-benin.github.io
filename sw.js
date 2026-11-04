@@ -1,11 +1,11 @@
 // Service worker : met en cache UNIQUEMENT les fichiers de l'interface,
 // pour un démarrage rapide. Les données comptables ne sont jamais mises en
 // cache : chaque consultation et chaque saisie passent par le serveur.
-const VERSION = 'gracias-interface-v5';
+const VERSION = 'gracias-interface-v6';
 const FICHIERS = ['./', './index.html', './config.js', './css/app.css', './icone.svg', './manifest.webmanifest',
   './js/app.js', './js/client.js', './js/format.js', './js/saisie-logique.js', './js/ui.js',
   './js/vues/balance.js', './js/vues/ecriture.js', './js/vues/ecritures.js', './js/vues/grand-livre.js', './js/vues/saisie.js',
-  './js/vues/lettrage.js', './js/vues/clotures.js', './js/vues/utilisateurs.js', './js/vues/sauvegarde.js', './js/vues/parametrage.js'];
+  './js/vues/lettrage.js', './js/vues/clotures.js', './js/vues/utilisateurs.js', './js/vues/sauvegarde.js', './js/vues/parametrage.js', './js/pieces.js'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then((c) => c.addAll(FICHIERS)).then(() => self.skipWaiting()));

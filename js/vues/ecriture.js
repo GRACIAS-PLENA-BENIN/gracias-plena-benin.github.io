@@ -1,6 +1,7 @@
 // Détail d'une écriture et actions : modifier, valider, supprimer, contrepasser.
 import { appeler } from '../client.js';
 import { h, annoncer, blocErreur, dialogue, ajouter } from '../ui.js';
+import { blocPieces } from '../pieces.js';
 import { formatMontantOuVide, formatMontant, formatDate, aujourdhui } from '../format.js';
 
 export async function vueEcriture(ctx, zone, id) {
@@ -89,6 +90,9 @@ export async function vueEcriture(ctx, zone, id) {
         h('th', { scope: 'row', colspan: '4' }, 'Total'),
         h('td', { class: 'nombre' }, formatMontant(totalD)), h('td', { class: 'nombre' }, formatMontant(totalC)), h('td', {}))))),
     erreurs, actions);
+  const imprimer = h('button', { type: 'button', class: 'bouton secondaire sans-impression' }, 'Imprimer / PDF');
+  imprimer.addEventListener('click', () => window.print());
+  ajouter(zone, h('div', { class: 'actions sans-impression' }, imprimer), await blocPieces(ctx, e));
 }
 
 function info(terme, valeur) {

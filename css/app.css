@@ -267,7 +267,7 @@ input.montant { text-align: right; }
   .tampon { transform: none; }
 }
 @media print {
-  .navigation, .entete, .actions, .filtres, .bandeau-avertissement { display: none; }
+  .navigation, .entete, .actions, .filtres, .bandeau-avertissement, .sans-impression, .zone-erreur, input[type=file] { display: none; }
   .cadre { margin: 0; padding: 0; }
   .defilement { overflow: visible; border: 0; }
 }

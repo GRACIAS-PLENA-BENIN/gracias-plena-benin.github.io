@@ -65,7 +65,7 @@ export async function vueGrandLivre(ctx, zone) {
               h('td', { class: 'nombre' }, formatMontantOuVide(l.credit)),
               h('td', { class: 'nombre' }, solde(l.solde)),
               h('td', {}, l.lettrage || '')))))),
-      h('div', { class: 'actions' }, exporter));
+      h('div', { class: 'actions sans-impression' }, exporter, boutonImprimer()));
   }
 
   const form = h('form', { class: 'filtres', novalidate: true },
@@ -76,4 +76,10 @@ export async function vueGrandLivre(ctx, zone) {
 
   ajouter(zone, h('h1', {}, 'Grand livre'), listeComptes, form, resultat);
   if (memo) await charger(); else champCompte.focus();
+}
+
+function boutonImprimer() {
+  const b = h('button', { type: 'button', class: 'bouton secondaire' }, 'Imprimer / PDF');
+  b.addEventListener('click', () => window.print());
+  return b;
 }

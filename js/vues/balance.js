@@ -55,7 +55,7 @@ export async function vueBalance(ctx, zone) {
           cols.map((c) => h('td', { class: 'nombre' }, formatMontantOuVide(l[c])))))),
         h('tfoot', {}, h('tr', {}, h('th', { scope: 'row', colspan: '2' }, 'Totaux'),
           cols.map((c) => h('td', { class: 'nombre' }, formatMontant(tot[c]))))))),
-      h('div', { class: 'actions' }, exporter));
+      h('div', { class: 'actions sans-impression' }, exporter, boutonImprimer()));
   }
 
   const form = h('form', { class: 'filtres', novalidate: true },
@@ -68,4 +68,10 @@ export async function vueBalance(ctx, zone) {
     h('p', { class: 'discret' }, 'Écritures validées uniquement. Les brouillards n\'ont aucun effet sur la balance.'),
     form, resultat);
   await charger();
+}
+
+function boutonImprimer() {
+  const b = h('button', { type: 'button', class: 'bouton secondaire' }, 'Imprimer / PDF');
+  b.addEventListener('click', () => window.print());
+  return b;
 }
