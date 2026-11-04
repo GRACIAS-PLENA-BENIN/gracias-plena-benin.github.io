@@ -13,6 +13,7 @@ import { vueSauvegarde, bandeauSauvegarde } from './vues/sauvegarde.js';
 import { vueParametrage } from './vues/parametrage.js';
 import { vueMarches } from './vues/marches.js';
 import { vueTresorerie } from './vues/tresorerie.js';
+import { vueImmobilisations } from './vues/immobilisations.js';
 
 const racine = document.getElementById('app');
 
@@ -46,6 +47,7 @@ const MENU = [
   { route: '#/tresorerie', titre: 'Caisse et banque', droit: 'lecture' },
   { route: '#/lettrage', titre: 'Lettrage', droit: 'lettrage' },
   { route: '#/marches', titre: 'Marchés', droit: 'lecture' },
+  { route: '#/immobilisations', titre: 'Immobilisations', droit: 'lecture' },
   { route: '#/parametrage', titre: 'Paramétrage', droit: 'lecture' },
   { route: '#/clotures', titre: 'Exercices et clôtures', droit: 'lecture' },
   { route: '#/utilisateurs', titre: 'Utilisateurs', droit: 'utilisateurs' },
@@ -184,6 +186,7 @@ async function afficherRoute() {
     else if (ecran === 'clotures') await vueClotures(ctx, zone);
     else if (ecran === 'parametrage') await vueParametrage(ctx, zone);
     else if (ecran === 'marches') await vueMarches(ctx, zone);
+    else if (ecran === 'immobilisations') await vueImmobilisations(ctx, zone);
     else if (ecran === 'tresorerie') await vueTresorerie(ctx, zone, param ? decodeURIComponent(param) : undefined);
     else if (ecran === 'marche' && param) await vueMarches(ctx, zone, decodeURIComponent(param));
     else await vueEcritures(ctx, zone);
