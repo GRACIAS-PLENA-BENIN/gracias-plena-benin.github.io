@@ -335,3 +335,11 @@ input.montant { text-align: right; }
 .liste { margin: 0 0 .75rem; padding-left: 1.2rem; }
 .liste li { margin-bottom: .3rem; }
 .bandeau-sauvegarde { border-color: #E9C27D; }
+
+/* ---------- Factures ---------- */
+.grille-formulaire { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .8rem 1rem; margin: 1rem 0; }
+.avertissement { padding: .6rem .9rem; border-left: 4px solid #b7791f; background: #fff8e6; border-radius: 4px; }
+.document-facture { margin-top: 1rem; }
+.entete-facture { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.entete-facture h1 { margin: 0 0 .3rem; }
+.tableau input, .tableau select { width: 100%; min-width: 4rem; }
