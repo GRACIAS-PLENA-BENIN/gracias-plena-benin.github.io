@@ -11,6 +11,7 @@ import { vueClotures } from './vues/clotures.js';
 import { vueUtilisateurs } from './vues/utilisateurs.js';
 import { vueSauvegarde, bandeauSauvegarde } from './vues/sauvegarde.js';
 import { vueParametrage } from './vues/parametrage.js';
+import { vueMarches } from './vues/marches.js';
 
 const racine = document.getElementById('app');
 
@@ -42,6 +43,7 @@ const MENU = [
   { route: '#/grand-livre', titre: 'Grand livre', droit: 'lecture', principal: true },
   { route: '#/balance', titre: 'Balance', droit: 'lecture', principal: true },
   { route: '#/lettrage', titre: 'Lettrage', droit: 'lettrage' },
+  { route: '#/marches', titre: 'Marchés', droit: 'lecture' },
   { route: '#/parametrage', titre: 'Paramétrage', droit: 'lecture' },
   { route: '#/clotures', titre: 'Exercices et clôtures', droit: 'lecture' },
   { route: '#/utilisateurs', titre: 'Utilisateurs', droit: 'utilisateurs' },
@@ -179,6 +181,8 @@ async function afficherRoute() {
     else if (ecran === 'lettrage' && ctx.peut('lettrage')) await vueLettrage(ctx, zone);
     else if (ecran === 'clotures') await vueClotures(ctx, zone);
     else if (ecran === 'parametrage') await vueParametrage(ctx, zone);
+    else if (ecran === 'marches') await vueMarches(ctx, zone);
+    else if (ecran === 'marche' && param) await vueMarches(ctx, zone, decodeURIComponent(param));
     else await vueEcritures(ctx, zone);
   } catch (err) {
     if (err instanceof ErreurApi && err.statut === 401) return;
